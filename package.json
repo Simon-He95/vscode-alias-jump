@@ -2,7 +2,7 @@
   "publisher": "simonhe",
   "name": "vscode-alias-jump",
   "displayName": "vscode-alias-jump",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "packageManager": "pnpm@8.1.1",
   "description": "vscode-alias-jump",
   "author": "Simon He <https://github.com/Simon-He95>",
