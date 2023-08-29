@@ -42,18 +42,18 @@ export function getAlias() {
   }
 }
 
-const extensions = ['js', 'vue', 'jsx', 'tsx', 'ts']
+const extensions = ['.js', '.vue', '.jsx', '.tsx', '.ts']
 export function findAliasExtensions(url: string) {
   if (isFile(url))
     return url
 
-  for (const suffix of extensions) {
-    const extensionUrl = `${url}.${suffix}`
+  for (const suffix of ['.js', '.ts', '.jsx', '.tsx']) {
+    const extensionUrl = `${url}${suffix}`
     if (isFile(extensionUrl))
       return extensionUrl
   }
   for (const suffix of extensions) {
-    const extensionUrl = `${url}/index.${suffix}`
+    const extensionUrl = `${url}/index${suffix}`
     if (isFile(extensionUrl))
       return extensionUrl
   }

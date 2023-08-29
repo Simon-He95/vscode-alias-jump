@@ -1,6 +1,7 @@
 import path from 'node:path'
 import * as vscode from 'vscode'
 import { findAliasExtensions, getAlias, getRootUrl, getUrl } from './utils'
+import a from './a'
 
 // todo: 支持monorepo
 export function activate(context: vscode.ExtensionContext) {
