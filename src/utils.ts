@@ -5,7 +5,8 @@ export function getUrl(str: string) {
   const importUrl = /import[\s\w\_,{}]+from[^(\'\"]+['\"]([^'\"]+)['\"]/
   const imporCsstUrl = /import\s+['\"]([^'\"]+)['\"]/
   const requireUrl = /require\(['"]([^'"]+)['"]\)/
-  const match = str.match(importUrl) || str.match(imporCsstUrl) || str.match(requireUrl)
+  const srcUrl = /src="([^"]+)"/
+  const match = str.match(importUrl) || str.match(imporCsstUrl) || str.match(requireUrl) || str.match(srcUrl)
   return match ? match[1] : ''
 }
 
