@@ -41,7 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       const columnStart = linetext.indexOf(aliasUrl)
       const columnEnd = columnStart + aliasUrl.length
-      const originSelectionRange = new vscode.Range(position.line, columnStart, position.line, columnEnd)
+      const originSelectionRange = new vscode.Range(position.line, columnStart - 1, position.line, columnEnd + 1)
       const result = [
         {
           originSelectionRange,

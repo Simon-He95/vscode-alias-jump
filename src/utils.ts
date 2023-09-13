@@ -2,11 +2,11 @@ import fs from 'node:fs'
 import * as vscode from 'vscode'
 
 export function getUrl(str: string) {
-  const importUrl = /import[\s\w\_,{}]+from[^(\'\"]+['\"]([^'\"]+)['\"]/
+  // const importUrl = /import[\s\w\_,{}]+from[^(\'\"]+['\"]([^'\"]+)['\"]/
   const imporCsstUrl = /import\s+['\"]([^'\"]+)['\"]/
-  const requireUrl = /require\(['"]([^'"]+)['"]\)/
-  const srcUrl = /src="([^"]+)"/
-  const match = str.match(importUrl) || str.match(imporCsstUrl) || str.match(requireUrl) || str.match(srcUrl)
+  // const requireUrl = /require\(['"]([^'"]+)['"]\)/
+  // const srcUrl = /src="([^"]+)"/
+  const match = str.match(imporCsstUrl)
   return match ? match[1] : ''
 }
 
