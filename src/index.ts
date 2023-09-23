@@ -23,24 +23,37 @@ export function activate(context: vscode.ExtensionContext) {
       const aliasUrl = getUrl(linetext)
       if (!aliasUrl)
         return
+      if (cacheMap.has(aliasUrl)) {
+        const { columnStart, columnEnd, result } = cacheMap.get(aliasUrl)
+        if ((position.character < columnStart) || (position.character > columnEnd))
+          return
 
-      if (cacheMap.has(aliasUrl))
-        return cacheMap.get(aliasUrl)
+        return result
+      }
 
       const alias = aliasUrl.split('/')[0]
-      if (alias[0] === '.')
-        return
+      let absolutePath = ''
+      if (alias[0] === '.') {
+        if (aliasUrl.split('/').slice(-1)[0].includes('.'))
+          return
+        absolutePath = findAliasExtensions(path.resolve(document.uri.fsPath, '../', aliasUrl))
+      }
+      else {
+        const aliasName = aliasMap[alias]
+        if (!aliasName)
+          return
 
-      const aliasName = aliasMap[alias]
-      if (!aliasName)
-        return
+        absolutePath = findAliasExtensions(aliasUrl.replace(alias, path.resolve(rootUrl, aliasName)))
+      }
 
-      const absolutePath = findAliasExtensions(aliasUrl.replace(alias, path.resolve(rootUrl, aliasName)))
-      if (!absolutePath)
+      if (!absolutePath || !absolutePath.endsWith('.vue')) {
+        cacheMap.set(aliasUrl, undefined)
         return
+      }
 
       const columnStart = linetext.indexOf(aliasUrl)
       const columnEnd = columnStart + aliasUrl.length
+
       const originSelectionRange = new vscode.Range(position.line, columnStart - 1, position.line, columnEnd + 1)
       const result = [
         {
@@ -49,7 +62,10 @@ export function activate(context: vscode.ExtensionContext) {
           targetUri: vscode.Uri.file(absolutePath),
         },
       ]
-      cacheMap.set(aliasUrl, result)
+      cacheMap.set(aliasUrl, { columnStart, columnEnd, result })
+      if ((position.character < columnStart) || (position.character > columnEnd))
+        return
+
       return result
     },
   })

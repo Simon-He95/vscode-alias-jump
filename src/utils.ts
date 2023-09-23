@@ -2,11 +2,11 @@ import fs from 'node:fs'
 import * as vscode from 'vscode'
 
 export function getUrl(str: string) {
-  // const importUrl = /import[\s\w\_,{}]+from[^(\'\"]+['\"]([^'\"]+)['\"]/
+  const importUrl = /import[\s\w\_,{}]+from[^(\'\"]+['\"]([^'\"]+)['\"]/
   const imporCsstUrl = /import\s+['\"]([^'\"]+)['\"]/
   // const requireUrl = /require\(['"]([^'"]+)['"]\)/
   // const srcUrl = /src="([^"]+)"/
-  const match = str.match(imporCsstUrl)
+  const match = str.match(imporCsstUrl) || str.match(importUrl)
   return match ? match[1] : ''
 }
 
@@ -48,7 +48,7 @@ export function findAliasExtensions(url: string) {
   if (isFile(url))
     return url
 
-  for (const suffix of ['.js', '.ts', '.jsx', '.tsx']) {
+  for (const suffix of ['.js', '.ts', '.jsx', '.tsx', '.vue']) {
     const extensionUrl = `${url}${suffix}`
     if (isFile(extensionUrl))
       return extensionUrl
