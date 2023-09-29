@@ -30,7 +30,6 @@ export function activate(context: vscode.ExtensionContext) {
 
         return result
       }
-
       const alias = aliasUrl.split('/')[0]
       let absolutePath = ''
       if (alias[0] === '.') {
@@ -46,7 +45,7 @@ export function activate(context: vscode.ExtensionContext) {
         absolutePath = findAliasExtensions(aliasUrl.replace(alias, path.resolve(rootUrl, aliasName)))
       }
 
-      if (!absolutePath || !absolutePath.endsWith('.vue')) {
+      if (!absolutePath) {
         cacheMap.set(aliasUrl, undefined)
         return
       }
