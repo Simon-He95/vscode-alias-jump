@@ -24,7 +24,10 @@ export function activate(context: vscode.ExtensionContext) {
       if (!aliasUrl)
         return
       if (cacheMap.has(aliasUrl)) {
-        const { columnStart, columnEnd, result } = cacheMap.get(aliasUrl)
+        const cache = cacheMap.get(aliasUrl)
+        if (!cache)
+          return
+        const { columnStart, columnEnd, result } = cache
         if ((position.character < columnStart) || (position.character > columnEnd))
           return
 
