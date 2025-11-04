@@ -66,7 +66,7 @@
     "@vscode-use/utils": "^0.1.60",
     "@vscode/vsce": "^3.6.2",
     "bumpp": "^9.11.1",
-    "changelogithub": "^0.13.0",
+    "changelogithub": "^0.13.11",
     "eslint": "^9.39.1",
     "find-up": "^8.0.0",
     "lazy-js-utils": "^0.1.49",
