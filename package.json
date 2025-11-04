@@ -1,11 +1,11 @@
 {
   "publisher": "simonhe",
   "name": "vscode-alias-jump",
-  "displayName": "vscode-alias-jump",
+  "displayName": "Alias Jump - Smart Path Navigation",
   "type": "module",
   "version": "0.0.10",
   "packageManager": "pnpm@8.15.9",
-  "description": "vscode-alias-jump",
+  "description": "🚀 Smart path alias resolution and navigation. Supports tsconfig/jsconfig paths, monorepo, hot-reload, multiple formats (import/require/CSS url). Perfect for Vue, React, TypeScript projects!",
   "author": "Simon He <https://github.com/Simon-He95>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/Simon-He95",
@@ -21,7 +21,24 @@
     "url": "https://github.com/Simon-He95/sponsor"
   },
   "categories": [
+    "Programming Languages",
     "Other"
+  ],
+  "keywords": [
+    "alias",
+    "path",
+    "import",
+    "navigation",
+    "tsconfig",
+    "jsconfig",
+    "typescript",
+    "javascript",
+    "vue",
+    "react",
+    "monorepo",
+    "jump",
+    "goto",
+    "definition"
   ],
   "main": "./dist/index.js",
   "icon": "icon.png",

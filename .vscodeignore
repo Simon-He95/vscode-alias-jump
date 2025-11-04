@@ -1,6 +1,55 @@
+# Source files (we only ship dist/)
 src
-node_modules
 test
+*.test.ts
+
+# Dependencies
+node_modules
+.yarn
+.pnpm-debug.log
+
+# Build tools
+tsconfig.json
+tsup.config.ts
+eslint.config.mjs
+.eslintrc*
+.eslintignore
+.prettierrc*
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# GitHub
 .github
+
+# IDE
 .vscode
-assets
+.idea
+*.code-workspace
+
+# CI/CD
+.travis.yml
+.gitlab-ci.yml
+
+# Documentation (keep README, CHANGELOG, LICENSE)
+MARKETING.md
+RELEASE_CHECKLIST.md
+RELEASE_NOTES.md
+
+# Package manager
+pnpm-lock.yaml
+pnpm-workspace.yaml
+package-lock.json
+yarn.lock
+
+# Misc
+.DS_Store
+*.log
+*.vsix
+.env
+.env.*
+
+# Assets (include in package if needed for README)
+# assets/
