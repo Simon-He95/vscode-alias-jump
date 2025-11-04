@@ -12,15 +12,14 @@
 ## 🌰 例子
 ### 配置完才可对 import '@/xxx' 进行解析, 实现路径映射跳转
 ```json
-{ 
+{
   "compilerOptions": {
     "paths": {
-        "@/*": ["src/*"],
-        "~/*": ["src/*"]
+      "@/*": ["src/*"],
+      "~/*": ["src/*"]
     }
   }
 }
-
 ```
 ### 🌱 灵感来源于[alias-skip](https://github.com/seolhw/alias-skip.git)
 
